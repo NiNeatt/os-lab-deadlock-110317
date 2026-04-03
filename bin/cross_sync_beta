@@ -1,0 +1,12 @@
+(
+echo "[CrossSync_Beta] Locking local Beta vault..."
+flock -x 201
+echo "[CrossSync_Beta] Beta locked. Sleeping..."
+sleep 2
+echo "[CrossSync_Beta] Attempting to lock remote Alpha vault..."
+flock -x 200
+echo "[CrossSync_Beta] Alpha locked. Syncing..."
+sleep 1
+echo "[CrossSync_Beta] Done."
+) 201>$HOME/os-lab-deadlock/public_dr_beta/vault.lock \
+  200>/home/g11-chan-sokseyha/os-lab-deadlock/public_dr_alpha/vault.lock

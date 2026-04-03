@@ -1,0 +1,13 @@
+
+echo "Unmounting virtual vaults..."
+
+
+losetup -a
+
+
+udisksctl unmount -b /dev/loopX
+udisksctl unmount -b /dev/loopY
+
+udisksctl loop-delete -b /dev/loopX
+udisksctl loop-delete -b /dev/loopY
+rm ~/os-lab-deadlock/mount_alpha ~/os-lab-deadlock/mount_beta
